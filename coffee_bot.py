@@ -7,8 +7,9 @@ def coffee_bot():
   #
   size = get_size()
   drink_type = get_drink_type()
-  
-  print("Alright, that's a {} {}!".format(size, drink_type))
+  cup_type = get_cup_type
+
+  print("Alright, that's a {} {} in a {}!".format(size, drink_type, cup_type))
   
   name = input("Can I get your name please? \n")
   
@@ -49,5 +50,16 @@ def order_latte():
   else:
     print("Please select [a], [b], or [c]")
     order_latte()
+
+def get_cup_type():
+  res = input('And what kind of cup would you like that served in? \n[a] Plastic Cup \n[b] Reusable Cup \n[c] Paper Cup \n')
+  if res == 'a':
+    return 'Plastic Cup'
+  elif res == 'b':
+    return 'Reusable Cup'
+  elif res == 'c':
+    return 'Paper Cup'
+  else:
+    print("Please select [a], [b], or [c]")
 # Call coffee_bot()!
 coffee_bot()
