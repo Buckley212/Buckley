@@ -6,11 +6,13 @@ def coffee_bot():
   order_drink = 'y'
   drinks = []
   
+  # Loop to allow more than one drink in the order
   while order_drink == 'y':
     size = get_size()  
     drink_type = get_drink_type()
-      
-    drink = '{} {}'.format(size, drink_type)
+    cup_type = get_cup_type()
+
+    drink = '{} {} {}'.format(size, drink_type, cup_type)
     print('Alright, that\'s a {}!'.format(drink))
     drinks.append(drink)
     
@@ -24,10 +26,13 @@ def coffee_bot():
 
   for drink in drinks:
     print('-', drink)
-        
+
   name = input('Can I get your name please? \n> ')
   print('Thanks, {}! Your order will be ready shortly.'.format(name))
 
+#Functions for selecting specifics about the drinks
+
+#Function for telling the program what size to get the drink in
 def get_size():
   res = input('What size drink can I get for you? \n[a] Small \n[b] Medium \n[c] Large \n> ')
   if res == 'a':
@@ -40,6 +45,7 @@ def get_size():
     print("Please select [a], [b], or [c]")
     get_size()
 
+#Another function for the type
 def get_drink_type():
   res = input("What type of drink would you like? \n[a] Brewed Coffee \n[b] Mocha \n[c] Latte \n")
   if res == 'a':
@@ -51,30 +57,33 @@ def get_drink_type():
   else:
     print("Please select [a], [b], or [c]")
     get_drink_type()
-  
+
+#If the user selects a latte, this function is used
 def order_latte():
   res = input('And what kind of milk for your latte? \n[a] 2% milk \n[b] Non-fat milk \n[c] Soy milk \n')
   if res == 'a':
-    return '2% milk'
+    return 'Mocha with 2% milk'
   elif res == 'b':
-    return 'Non-fat milk'
+    return 'Mocha with Non-fat milk'
   elif res == 'c':
-    return 'Soy milk'
+    return 'Mocha with Soy milk'
   else:
     print("Please select [a], [b], or [c]")
     order_latte()
 
+# Function used to select cup type
 def get_cup_type():
   res = input('And what kind of cup would you like that served in? \n[a] Plastic Cup \n[b] Reusable Cup \n[c] Paper Cup \n')
   if res == 'a':
-    return 'Plastic Cup'
+    return 'in a plastic cup'
   elif res == 'b':
-    return 'Reusable Cup'
+    return 'in a reusable cup'
   elif res == 'c':
-    return 'Paper Cup'
+    return 'in a paper cup'
   else:
     print("Please select [a], [b], or [c]")
 
+# If the user orders a mocha, this function is activated
 def order_mocha():
   while True:
     res = input("Would you like to try our limited-edition peppermint mocha? \n[a] Sure! \n[b] Maybe next time! \n")
@@ -82,5 +91,6 @@ def order_mocha():
       return 'peppermint mocha'
     elif res == 'b':
       return 'mocha'
-# Call coffee_bot()!
+
+#Calling Mr.Bot, please
 coffee_bot()
